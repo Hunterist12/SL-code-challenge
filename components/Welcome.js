@@ -32,7 +32,9 @@ const Welcome = () => {
 
         @media (min-width: 935px) {
           .container {
+            box-sizing: border-box;
             width: 535px;
+            height: 100%;
           }
         }
       `}</style>

@@ -12,8 +12,10 @@ const Home = () => {
       </Head>
       <div className="grid">
         <div className="leftMargin"></div>
-        <div className="content" style={{height: window.innerHeight}}>
+        <div className="welcome">
           <Welcome />
+        </div>
+        <div className="form">
           <UserInformationForm />
         </div>
         <div className="rightMargin"></div>
@@ -24,19 +26,31 @@ const Home = () => {
         }
 
         @media (min-width: 935px) {
-          .content {
-            display: flex;
-            width: 935px;
-          }
-
           .grid {
             display: grid;
             grid-template-columns: auto 535px 400px auto;
-            grid-template-rows: auto;
+            grid-template-rows: ${window.innerHeight}px;
           }
 
           .leftMargin {
+            grid-column: 1 / span 1;
+            grid-row: 1 / span 1;
             background-color: #585858;
+          }
+
+          .welcome {
+            grid-column: 2 / span 1;
+            grid-row: 1 / span 1;
+          }
+
+          .form {
+            grid-column: 3 / span 1;
+            grid-row: 1 / span 1;
+          }
+
+          .rightMargin {
+            grid-column: 4 / span 1;
+            grid-row: 1 / span 1;
           }
         }
       `}</style>
