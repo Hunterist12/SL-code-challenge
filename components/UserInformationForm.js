@@ -70,7 +70,8 @@ const UserInformationForm = () => {
               value={values.address2}
             />
             <button type="submit" disabled={isSubmitting}>
-              Next<img src="/static/White_Arrow.svg" height="10px" width="10px" />
+              Next
+              <img src="/static/White_Arrow.svg" height="10px" width="10px" />
             </button>
           </form>
         )}
@@ -78,6 +79,8 @@ const UserInformationForm = () => {
       <style jsx>{`
         .container {
           padding: 32px 16px 0 16px;
+          max-width: 408px;
+          margin: auto;
         }
 
         form {
@@ -114,7 +117,7 @@ const UserInformationForm = () => {
         button {
           background-color: #ffab44;
           color: #ffffff;
-          font-family: 'Roboto';
+          font-family: "Roboto";
           font-weight: bold;
           font-size: 16px;
           height: 48px;
