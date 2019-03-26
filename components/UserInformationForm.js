@@ -1,81 +1,48 @@
-import { Formik } from "formik";
-
-const UserInformationForm = () => {
+const UserInformationForm = ({ handleSubmit, handleChange, handleBlur, values, errors, touched, isSubmitting }) => {
   return (
     <div className="container">
-      <Formik
-        initialValues={{ firstName: "", lastName: "" }}
-        validate={values => {
-          let errors = {};
-          if (!values.email) {
-            errors.email = "Required";
-          } else if (
-            !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-          ) {
-            errors.email = "Invalid email address";
-          }
-          return errors;
-        }}
-        onSubmit={(values, { setSubmitting }) => {
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            setSubmitting(false);
-          }, 400);
-        }}
-      >
-        {({
-          values,
-          errors,
-          touched,
-          handleChange,
-          handleBlur,
-          handleSubmit,
-          isSubmitting
-        }) => (
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="firstName">FIRST NAME</label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.firstName}
-            />
-            <label htmlFor="lastName">LAST NAME</label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.lastName}
-            />
-            <label htmlFor="address">ADDRESS</label>
-            <input
-              type="text"
-              id="address"
-              name="address"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.address}
-            />
-            <label htmlFor="address2">ADDRESS 2 (OPTIONAL)</label>
-            <input
-              type="text"
-              id="address2"
-              name="address2"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.address2}
-            />
-            <button type="submit" disabled={isSubmitting}>
-              Next
-              <img src="/static/White_Arrow.svg" height="10px" width="10px" />
-            </button>
-          </form>
-        )}
-      </Formik>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="firstName">FIRST NAME</label>
+        <input
+          type="text"
+          id="firstName"
+          name="firstName"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.firstName}
+        />
+        <label htmlFor="lastName">LAST NAME</label>
+        <input
+          type="text"
+          id="lastName"
+          name="lastName"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.lastName}
+        />
+        <label htmlFor="address">ADDRESS</label>
+        <input
+          type="text"
+          id="address"
+          name="address"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.address}
+        />
+        <label htmlFor="address2">ADDRESS 2 (OPTIONAL)</label>
+        <input
+          type="text"
+          id="address2"
+          name="address2"
+          onChange={handleChange}
+          onBlur={handleBlur}
+          value={values.address2}
+        />
+        <button type="submit" disabled={isSubmitting}>
+          Next
+          <img src="/static/White_Arrow.svg" height="10px" width="10px" />
+        </button>
+      </form>
       <style jsx>{`
         .container {
           padding: 32px 16px 0 16px;
