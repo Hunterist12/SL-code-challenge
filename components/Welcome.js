@@ -1,5 +1,3 @@
-import { Fragment } from 'react';
-
 const Welcome = () => {
   return (
     <div className="welcome">

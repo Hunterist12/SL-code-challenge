@@ -1,5 +1,6 @@
 import Welcome from '../components/Welcome';
 import Head from 'next/head';
+import UserInformationForm from '../components/UserInformationForm';
 
 const Home = () => {
   return (
@@ -10,7 +11,7 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Welcome />
-      {/* <Form /> */}
+      <UserInformationForm />
       <style jsx global>{`
         body {
           margin: 0;
