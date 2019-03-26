@@ -23,9 +23,14 @@ const UserInformationForm = ({
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.firstName}
-          className={errors.firstName ? "inputError" : null}
+          className={errors.firstName && touched.firstName ? "inputError" : null}
         />
-        <label htmlFor="lastName">LAST NAME</label>
+        <div className="row">
+          <label htmlFor="lastName">LAST NAME</label>
+          {errors.lastName && touched.lastName ? (
+            <div className="error">{errors.lastName}</div>
+          ) : null}
+        </div>
         <input
           type="text"
           id="lastName"
@@ -33,8 +38,14 @@ const UserInformationForm = ({
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.lastName}
+          className={errors.lastName && touched.lastName ? "inputError" : null}
         />
-        <label htmlFor="address">ADDRESS</label>
+        <div className="row">
+          <label htmlFor="address">ADDRESS</label>
+          {errors.address && touched.address ? (
+            <div className="error">{errors.address}</div>
+          ) : null}
+        </div>
         <input
           type="text"
           id="address"
@@ -42,6 +53,7 @@ const UserInformationForm = ({
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.address}
+          className={errors.address && touched.address ? "inputError" : null}
         />
         <label htmlFor="address2">ADDRESS 2 (OPTIONAL)</label>
         <input
