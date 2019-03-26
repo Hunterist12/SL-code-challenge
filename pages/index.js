@@ -1,6 +1,6 @@
 import Welcome from "../components/Welcome";
 import Head from "next/head";
-import FormWrapper from "../components/FormWrapper";
+import FormLogic from "../components/FormLogic";
 
 const Home = () => {
   return (
@@ -22,7 +22,7 @@ const Home = () => {
           <Welcome />
         </div>
         <div className="form">
-          <FormWrapper />
+          <FormLogic />
         </div>
         <div className="rightMargin" />
       </div>

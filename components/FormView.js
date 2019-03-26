@@ -1,8 +1,21 @@
-const UserInformationForm = ({ handleSubmit, handleChange, handleBlur, values, errors, touched, isSubmitting }) => {
+const UserInformationForm = ({
+  handleSubmit,
+  handleChange,
+  handleBlur,
+  values,
+  errors,
+  touched,
+  isSubmitting
+}) => {
   return (
     <div className="container">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="firstName">FIRST NAME</label>
+      <form>
+        <div className="row">
+          <label htmlFor="firstName">FIRST NAME</label>
+          {errors.firstName && touched.firstName ? (
+            <div className="error">{errors.firstName}</div>
+          ) : null}
+        </div>
         <input
           type="text"
           id="firstName"
@@ -10,6 +23,7 @@ const UserInformationForm = ({ handleSubmit, handleChange, handleBlur, values, e
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.firstName}
+          className={errors.firstName ? "inputError" : null}
         />
         <label htmlFor="lastName">LAST NAME</label>
         <input
@@ -38,7 +52,7 @@ const UserInformationForm = ({ handleSubmit, handleChange, handleBlur, values, e
           onBlur={handleBlur}
           value={values.address2}
         />
-        <button type="submit" disabled={isSubmitting}>
+        <button type="submit" disabled={isSubmitting} onClick={handleSubmit}>
           Next
           <img src="/static/White_Arrow.svg" height="10px" width="10px" />
         </button>
@@ -48,6 +62,21 @@ const UserInformationForm = ({ handleSubmit, handleChange, handleBlur, values, e
           padding: 32px 16px 0 16px;
           max-width: 408px;
           margin: auto;
+        }
+
+        .row {
+          display: flex;
+        }
+
+        .error {
+          color: #e70000;
+          font-family: "Merriweather";
+          font-size: 12px;
+          margin-left: 2px;
+        }
+
+        .inputError {
+          border: 1px solid #e70000;
         }
 
         form {
@@ -92,6 +121,11 @@ const UserInformationForm = ({ handleSubmit, handleChange, handleBlur, values, e
           border: none;
           border-radius: 6px;
           padding: 0;
+        }
+
+        button:focus {
+          outline: none;
+          border: 1px inset #ffab44;
         }
 
         img {
