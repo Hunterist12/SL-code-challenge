@@ -33,7 +33,7 @@ const UserInformationForm = () => {
           isSubmitting
         }) => (
           <form onSubmit={handleSubmit}>
-            <label for="firstName">FIRST NAME</label>
+            <label htmlFor="firstName">FIRST NAME</label>
             <input
               type="text"
               id="firstName"
@@ -42,7 +42,7 @@ const UserInformationForm = () => {
               onBlur={handleBlur}
               value={values.firstName}
             />
-            <label for="lastName">LAST NAME</label>
+            <label htmlFor="lastName">LAST NAME</label>
             <input
               type="text"
               id="lastName"
@@ -51,7 +51,7 @@ const UserInformationForm = () => {
               onBlur={handleBlur}
               value={values.lastName}
             />
-            <label for="address">ADDRESS</label>
+            <label htmlFor="address">ADDRESS</label>
             <input
               type="text"
               id="address"
@@ -60,7 +60,7 @@ const UserInformationForm = () => {
               onBlur={handleBlur}
               value={values.address}
             />
-            <label for="address2">ADDRESS 2 (OPTIONAL)</label>
+            <label htmlFor="address2">ADDRESS 2 (OPTIONAL)</label>
             <input
               type="text"
               id="address2"
@@ -97,6 +97,7 @@ const UserInformationForm = () => {
           border: 1px solid #eaeaea;
           border-radius: 6px;
           height: 48px;
+          max-width: 358px;
           margin: 11px 0 24px 0;
           padding-left: 16px;
           color: #666666;
@@ -117,12 +118,30 @@ const UserInformationForm = () => {
           font-weight: bold;
           font-size: 16px;
           height: 48px;
+          max-width: 376px;
           border: none;
           border-radius: 6px;
+          padding: 0;
         }
 
         img {
           margin-left: 8px;
+        }
+
+        @media (min-width: 935px) {
+          .container {
+            padding-left: 24px;
+            padding-top: 115px;
+          }
+
+          form {
+            width: 424px;
+          }
+
+          button {
+            margin-top: 24px;
+            width: 105px;
+          }
         }
       `}</style>
     </div>

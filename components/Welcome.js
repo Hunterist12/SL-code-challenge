@@ -12,6 +12,7 @@ const Welcome = () => {
         .container {
           background-color: #585858;
           padding: 32px 0 32px 16px;
+          display: block;
         }
 
         h1 {
@@ -26,7 +27,13 @@ const Welcome = () => {
           color: #eaeaea;
           font-family: 'Merriweather';
           font-size: 14px;
-          margin: 21px 0 0 0;
+          margin: 16px 0 0 0;
+        }
+
+        @media (min-width: 935px) {
+          .container {
+            width: 535px;
+          }
         }
       `}</style>
     </div>
