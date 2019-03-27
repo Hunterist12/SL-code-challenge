@@ -26,7 +26,7 @@ const FormLogic = () => {
         }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting, resetForm }) => {
+      onSubmit={(values, { resetForm }) => {
         setTimeout(() => {
           alert(JSON.stringify(values, null, 2));
           resetForm();
