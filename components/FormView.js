@@ -5,7 +5,8 @@ const UserInformationForm = ({
   values,
   errors,
   touched,
-  isSubmitting
+  isSubmitting,
+  isValid
 }) => {
   return (
     <div className="container">
@@ -23,9 +24,16 @@ const UserInformationForm = ({
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.firstName}
-          className={errors.firstName ? "inputError" : null}
+          className={
+            errors.firstName && touched.firstName ? "inputError" : null
+          }
         />
-        <label htmlFor="lastName">LAST NAME</label>
+        <div className="row">
+          <label htmlFor="lastName">LAST NAME</label>
+          {errors.lastName && touched.lastName ? (
+            <div className="error">{errors.lastName}</div>
+          ) : null}
+        </div>
         <input
           type="text"
           id="lastName"
@@ -33,8 +41,14 @@ const UserInformationForm = ({
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.lastName}
+          className={errors.lastName && touched.lastName ? "inputError" : null}
         />
-        <label htmlFor="address">ADDRESS</label>
+        <div className="row">
+          <label htmlFor="address">ADDRESS</label>
+          {errors.address && touched.address ? (
+            <div className="error">{errors.address}</div>
+          ) : null}
+        </div>
         <input
           type="text"
           id="address"
@@ -42,6 +56,7 @@ const UserInformationForm = ({
           onChange={handleChange}
           onBlur={handleBlur}
           value={values.address}
+          className={errors.address && touched.address ? "inputError" : null}
         />
         <label htmlFor="address2">ADDRESS 2 (OPTIONAL)</label>
         <input
@@ -52,7 +67,11 @@ const UserInformationForm = ({
           onBlur={handleBlur}
           value={values.address2}
         />
-        <button type="submit" disabled={isSubmitting} onClick={handleSubmit}>
+        <button
+          type="submit"
+          disabled={isSubmitting | !isValid}
+          onClick={handleSubmit}
+        >
           Next
           <img src="/static/White_Arrow.svg" height="10px" width="10px" />
         </button>
@@ -63,34 +82,28 @@ const UserInformationForm = ({
           max-width: 408px;
           margin: auto;
         }
-
         .row {
           display: flex;
         }
-
         .error {
           color: #e70000;
           font-family: "Merriweather";
           font-size: 12px;
           margin-left: 2px;
         }
-
         .inputError {
           border: 1px solid #e70000;
         }
-
         form {
           display: flex;
           flex-direction: column;
         }
-
         label {
           color: #666666;
           font-size: 12px;
           padding-left: 1px;
           font-family: "Merriweather";
         }
-
         input {
           background-color: #f7f7f7;
           border: 1px solid #eaeaea;
@@ -103,13 +116,11 @@ const UserInformationForm = ({
           font-family: "Roboto";
           font-size: 14px;
         }
-
         input:focus {
           outline: none;
           background-color: #ffffff;
           border: 1px solid #00adee;
         }
-
         button {
           background-color: #ffab44;
           color: #ffffff;
@@ -122,26 +133,21 @@ const UserInformationForm = ({
           border-radius: 6px;
           padding: 0;
         }
-
         button:focus {
           outline: none;
           border: 1px inset #ffab44;
         }
-
         img {
           margin-left: 8px;
         }
-
         @media (min-width: 935px) {
           .container {
             padding-left: 24px;
             padding-top: 115px;
           }
-
           form {
             width: 424px;
           }
-
           button {
             margin-top: 24px;
             width: 105px;
