@@ -17,14 +17,19 @@ class FormLogic extends React.Component {
   }
 
   handleChange = e => {
+    const name = e.target.name;
+    const value = e.target.value;
     const change = {};
-    change[e.target.name] = e.target.value;
-    this.setState(change, this._checkValidity);
+    change[name] = value;
+    this.setState(change, () => {
+      this._checkForErrors(name, value);
+      this._checkValidity()
+    });
   };
 
   handleBlur = e => {
     this._setTouched(e.target.name);
-    this._checkForErrors(e);
+    this._checkForErrors(e.target.name, e.target.value  );
   };
 
   handleSubmit = e => {
@@ -62,18 +67,17 @@ class FormLogic extends React.Component {
     this.setState({ touched });
   };
 
-  _checkForErrors = (e) => {
+  _checkForErrors = (name, value) => {
     const errors = this.state.errors;
-    if (!e.target.value) {
-      errors[e.target.name] = "Required";
+    if (!value) {
+      errors[name] = "Required";
     } else {
-      delete errors[e.target.name];
+      delete errors[name];
     }
     this.setState({ errors });
   }
 
   _checkValidity = () => {
-    console.log('checking validity...')
     let { firstName, lastName, address } = this.state;
     if (firstName && lastName && address) {
       this.setState({ isValid: true });
